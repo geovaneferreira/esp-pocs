@@ -16,6 +16,8 @@
 #include "esp_log.h"
 
 static const char *TAG = "ExampleUART";
+static const char *TAGRX = "UART RX";
+
 
 #define ECHO_TEST_TXD 17
 #define ECHO_TEST_RXD 16
@@ -54,7 +56,7 @@ static void uart_task(void *arg)
         // Read data from the UART
         int len = uart_read_bytes(UART_PORT_NUM, data, BUF_SIZE, 20 / portTICK_RATE_MS);
         if(len > 1){
-            ESP_LOGI(TAG, "Uart RX = %s", (const char *) data);
+            ESP_LOG_BUFFER_CHAR(TAGRX, data, len);
             // Write data back to the UART
             uart_write_bytes(UART_PORT_NUM, (const char *) data, len);
             vTaskDelay(10);
