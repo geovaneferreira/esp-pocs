@@ -22,12 +22,13 @@ static const char *TAG = "uart_events";
 /**
  * This example shows how to use the UART driver to handle UART interrupt.
  *
- * - Port: UART0
+ * - Port: UART2
  * - Receive (Rx) buffer: on
  * - Transmit (Tx) buffer: off
  * - Flow control: off
  * - Event queue: on
- * - Pin assignment: TxD (default), RxD (default)
+ * - Pin assignment: TxD (default), RxD (default) For uart0
+ * - Pin assignment: TxD (default), RxD (default) For uart2
  */
 
 #define EX_UART_NUM UART_NUM_2
@@ -118,9 +119,11 @@ void app_main()
 	esp_log_level_set(TAG, ESP_LOG_INFO);
 
 	//Set UART pins (using UART0 default pins ie no changes.)
-	//ESP_ERROR_CHECK(uart_set_pin(EX_UART_NUM, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE));
-	
+	#if EX_UART_NUM == UART_NUM_0
+	ESP_ERROR_CHECK(uart_set_pin(EX_UART_NUM, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE));
+	#else
 	ESP_ERROR_CHECK(uart_set_pin(EX_UART_NUM, ECHO_TEST_TXD, ECHO_TEST_RXD, ECHO_TEST_RTS, ECHO_TEST_CTS));
+	#endif
 	//Install UART driver, and get the queue.
 	ESP_ERROR_CHECK(uart_driver_install(EX_UART_NUM, BUF_SIZE * 2, 0, 0, NULL, 0));
 
