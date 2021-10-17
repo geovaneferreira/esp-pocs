@@ -30,7 +30,12 @@ static const char *TAG = "uart_events";
  * - Pin assignment: TxD (default), RxD (default)
  */
 
-#define EX_UART_NUM UART_NUM_0
+#define EX_UART_NUM UART_NUM_2
+#define ECHO_TEST_TXD 17
+#define ECHO_TEST_RXD 16
+#define ECHO_TEST_RTS (UART_PIN_NO_CHANGE)
+#define ECHO_TEST_CTS (UART_PIN_NO_CHANGE)
+
 #define PATTERN_CHR_NUM    (3)         /*!< Set the number of consecutive and identical characters received by receiver which defines a UART pattern*/
 
 #define BUF_SIZE (1024)
@@ -72,11 +77,11 @@ static void IRAM_ATTR uart_intr_handle(void *arg)
   uint16_t rx_fifo_len, status;
   uint16_t i = 0;
   
-  status = UART0.int_st.val; // read UART interrupt Status
-  rx_fifo_len = UART0.status.rxfifo_cnt; // read number of bytes in UART buffer
+  status = UART2.int_st.val; // read UART interrupt Status
+  rx_fifo_len = UART2.status.rxfifo_cnt; // read number of bytes in UART buffer
   
   while(rx_fifo_len){
-   rxbuf[i++] = UART0.fifo.rw_byte; // read all bytes
+   rxbuf[i++] = UART2.fifo.rw_byte; // read all bytes
    rx_fifo_len--;
  }
   
@@ -113,8 +118,9 @@ void app_main()
 	esp_log_level_set(TAG, ESP_LOG_INFO);
 
 	//Set UART pins (using UART0 default pins ie no changes.)
-	ESP_ERROR_CHECK(uart_set_pin(EX_UART_NUM, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE));
-
+	//ESP_ERROR_CHECK(uart_set_pin(EX_UART_NUM, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE));
+	
+	ESP_ERROR_CHECK(uart_set_pin(EX_UART_NUM, ECHO_TEST_TXD, ECHO_TEST_RXD, ECHO_TEST_RTS, ECHO_TEST_CTS));
 	//Install UART driver, and get the queue.
 	ESP_ERROR_CHECK(uart_driver_install(EX_UART_NUM, BUF_SIZE * 2, 0, 0, NULL, 0));
 
