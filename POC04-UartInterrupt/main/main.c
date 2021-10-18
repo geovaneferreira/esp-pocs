@@ -13,8 +13,6 @@ UART Interrupt Example
 #include "esp_intr_alloc.h"
 #include "esp32/rom/uart.h"
 
-
-
 #define BLINK_GPIO GPIO_NUM_2
 
 static const char *TAG = "uart_events";
@@ -22,18 +20,28 @@ static const char *TAG = "uart_events";
 /**
  * This example shows how to use the UART driver to handle UART interrupt.
  *
- * - Port: UART2
+ * - Port: UARTx : 0 (UART_NUM_0), 1 (UART_NUM_1) or 2 (UART_NUM_2)
  * - Receive (Rx) buffer: on
  * - Transmit (Tx) buffer: off
  * - Flow control: off
  * - Event queue: on
  * - Pin assignment: TxD (default), RxD (default) For uart0
- * - Pin assignment: TxD (default), RxD (default) For uart2
+ * - Pin assignment: TxD 27, RxD 14 For uart1
+ * - Pin assignment: TxD 17, RxD 16 For uart2
  */
 
-#define EX_UART_NUM UART_NUM_2
-#define ECHO_TEST_TXD 17
-#define ECHO_TEST_RXD 16
+#define EX_UART_NUM UART_NUM_1
+
+#if EX_UART_NUM == UART_NUM_1
+	#define ECHO_TEST_TXD 27
+	#define ECHO_TEST_RXD 14
+#elif EX_UART_NUM == UART_NUM_2
+	#define ECHO_TEST_TXD 17
+	#define ECHO_TEST_RXD 16
+#else
+
+#endif
+
 #define ECHO_TEST_RTS (UART_PIN_NO_CHANGE)
 #define ECHO_TEST_CTS (UART_PIN_NO_CHANGE)
 
@@ -77,13 +85,26 @@ static void IRAM_ATTR uart_intr_handle(void *arg)
 {
   uint16_t rx_fifo_len, status;
   uint16_t i = 0;
-  
-  status = UART2.int_st.val; // read UART interrupt Status
-  rx_fifo_len = UART2.status.rxfifo_cnt; // read number of bytes in UART buffer
-  
+  #if EX_UART_NUM == UART_NUM_0
+  	status = UART0.int_st.val; // read UART interrupt Status
+  	rx_fifo_len = UART0.status.rxfifo_cnt; // read number of bytes in UART buffer
+  #elif EX_UART_NUM == UART_NUM_1
+	status = UART1.int_st.val; // read UART interrupt Status
+  	rx_fifo_len = UART1.status.rxfifo_cnt; // read number of bytes in UART buffer
+  #else
+	status = UART2.int_st.val; // read UART interrupt Status
+  	rx_fifo_len = UART2.status.rxfifo_cnt; // read number of bytes in UART buffer
+  #endif
+
   while(rx_fifo_len){
-   rxbuf[i++] = UART2.fifo.rw_byte; // read all bytes
-   rx_fifo_len--;
+	#if EX_UART_NUM == UART_NUM_0
+		rxbuf[i++] = UART0.fifo.rw_byte; // read all bytes
+	#elif EX_UART_NUM == UART_NUM_1
+		rxbuf[i++] = UART1.fifo.rw_byte; // read all bytes
+	#else
+		rxbuf[i++] = UART2.fifo.rw_byte; // read all bytes
+	#endif
+   	rx_fifo_len--;
  }
   
  // after reading bytes from buffer clear UART interrupt status
