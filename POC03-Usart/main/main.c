@@ -51,16 +51,29 @@ static void uart_task(void *arg)
 {
     // Configure a temporary buffer for the incoming data
     uint8_t *data = (uint8_t *) malloc(BUF_SIZE);
-
+    uint8_t *datacp = (uint8_t *) malloc(BUF_SIZE*2);
+    int newdata = 0;
+    int lenpk = 0;
     while (1) {
         // Read data from the UART
         int len = uart_read_bytes(UART_PORT_NUM, data, BUF_SIZE, 20 / portTICK_RATE_MS);
         if(len > 1){
-            ESP_LOG_BUFFER_CHAR(TAGRX, data, len);
-            // Write data back to the UART
-            uart_write_bytes(UART_PORT_NUM, (const char *) data, len);
+            printf("recebido %d\n", len);
+            for(int i=0;i<len;i++){
+                datacp[i+lenpk] = data[i];
+            }
+            lenpk += len;
             vTaskDelay(10);
+            newdata = 1;
+        } else if(newdata == 1 && len == 0){
+            //Log to console
+            ESP_LOG_BUFFER_CHAR(TAGRX, datacp, lenpk);
+            // Write data back to the UART
+            uart_write_bytes(UART_PORT_NUM, (const char *) datacp, lenpk);
+            lenpk = 0;
+            newdata = 0;
         }
+        vTaskDelay(1);
     }
 }
 
