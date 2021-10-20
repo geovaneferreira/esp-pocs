@@ -7,5 +7,10 @@
     "idf.openOcdConfigs": "interface/ftdi/esp32_devkitj_v1.cfg,target/esp32.cfg",
     "idf.port": "/dev/cu.usbserial-0001",
     "idf.pythonBinPath": "/Users/geovaneferreira/.espressif/python_env/idf4.4_py3.10_env/bin/python",
-    "idf.toolsPath": "/Users/geovaneferreira/.espressif"
+    "idf.toolsPath": "/Users/geovaneferreira/.espressif",
+    "files.associations": {
+        "*.tcc": "c",
+        "streambuf": "c",
+        "*.ipp": "c"
+    }
 }

@@ -53,6 +53,9 @@ static const char *TAG = "FLipMouseOTA-UPDATE-2";
 /*an ota data write buffer ready to write to the flash*/
 uint8_t ota_write_data[BUFFSIZE + 1] = { 0 };
 
+uint8_t ack[4] = {0x1a,0x01,0x79,0x5d};
+uint8_t start_ota_cmd[4] = {0x5a,0x55,0x5a,0x55};
+uint8_t end_ota_cmd[4] = {0x5F,0x5a,0x5F,0x5a};
 static void __attribute__((noreturn)) task_fatal_error()
 {
     ESP_LOGE(TAG, "Exiting task due to fatal error...");
@@ -155,18 +158,27 @@ static void ota_example_task(void *pvParameter)
     assert(update_partition != NULL);
     
     uart_flush(HAL_SERIAL_UART);
-    uint8_t sync[8]; //include \r\n
-    uint8_t sync_test[6] = {0xC0,0xFF,0xFE,0xAA,0x55,0x90};
-    uart_read_bytes(HAL_SERIAL_UART, sync, 6, 5000);
-    
-    if(memcmp(sync,sync_test,6) != 0)
-    {
-        ESP_LOGE(TAG,"recv:");
-        ESP_LOG_BUFFER_HEXDUMP(TAG,sync,6,ESP_LOG_ERROR);
-        ESP_LOGE(TAG,"expected:");
-        ESP_LOG_BUFFER_HEXDUMP(TAG,sync_test,6,ESP_LOG_ERROR);
-        ESP_LOGE(TAG,"Sync bytes not correct");
-        task_fatal_error();
+    uint8_t sync[4];
+    while (1) {
+        // Read data from the UART
+        int len = uart_read_bytes(HAL_SERIAL_UART, sync, 4, 20 / portTICK_RATE_MS);
+        if(len > 1){
+            vTaskDelay(10);
+            if(memcmp(sync,start_ota_cmd,4) != 0)
+            {
+                ESP_LOGE(TAG,"recv:");
+                ESP_LOG_BUFFER_HEXDUMP(TAG,sync,6,ESP_LOG_ERROR);
+                ESP_LOGE(TAG,"expected:");
+                ESP_LOG_BUFFER_HEXDUMP(TAG,start_ota_cmd,6,ESP_LOG_ERROR);
+                ESP_LOGE(TAG,"Start bytes not correct");
+                continue;
+            } else {
+                ESP_LOGI(TAG,"Sending ACK to start OTA");
+                uart_write_bytes(HAL_SERIAL_UART, (const char *) ack, sizeof(ack));
+                break;
+            }
+        }
+        vTaskDelay(1);
     }
 
     int binary_file_length = 0;
@@ -174,10 +186,11 @@ static void ota_example_task(void *pvParameter)
     bool image_header_was_checked = false;
     while (1) {
         //int data_read = esp_http_client_read(client, ota_write_data, BUFFSIZE);
-        int data_read = uart_read_bytes(HAL_SERIAL_UART, ota_write_data, BUFFSIZE, 800);
-        if (data_read < 0) {
+        int data_read = uart_read_bytes(HAL_SERIAL_UART, ota_write_data, BUFFSIZE, 20);
+        if (data_read < 1) {
             ESP_LOGE(TAG, "Error: UART data read error");
-            task_fatal_error();
+            vTaskDelay(10);
+            continue;
         } else if (data_read > 0) {
             if (image_header_was_checked == false) {
                 esp_app_desc_t new_app_info;
@@ -221,20 +234,25 @@ static void ota_example_task(void *pvParameter)
                     }
                     ESP_LOGI(TAG, "esp_ota_begin succeeded");
                 } else {
-                    ESP_LOGE(TAG, "received package is not fit len");
+                    ESP_LOGE(TAG, "received package is not fit len size rec %d, size espected %d ", data_read, sizeof(esp_image_header_t) + sizeof(esp_image_segment_header_t) + sizeof(esp_app_desc_t));
                     task_fatal_error();
                 }
             }
+            else {
+             if(memcmp(ota_write_data,end_ota_cmd,4) == 0){
+                    ESP_LOGI(TAG, "END DOWNLOAD");
+                    break;
+                }
+            }
+            
             err = esp_ota_write( update_handle, (const void *)ota_write_data, data_read);
             if (err != ESP_OK) {
                 task_fatal_error();
             }
             binary_file_length += data_read;
-            ESP_LOGI(TAG, "Written image length %d", binary_file_length);
-        } else if (data_read == 0) {
-            ///TODO: signal end of transmission
-            ESP_LOGI(TAG, "Connection closed,all data received");
-            break;
+            ESP_LOGI(TAG, "Written %d image length %d", data_read, binary_file_length);
+            ESP_LOGI(TAG,"Sending ACK to start OTA");
+            uart_write_bytes(HAL_SERIAL_UART, (const char *) ack, sizeof(ack));
         }
     }
     ESP_LOGI(TAG, "Total Write binary data length : %d", binary_file_length);
