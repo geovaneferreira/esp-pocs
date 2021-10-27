@@ -1,0 +1,25 @@
+//Atualizar os drivers do pc
+//rodar o openocd C:\Users\geovane.ferreira\.espressif\tools\openocd-esp32\v0.10.0-esp32-20210902\openocd-esp32\bin\openocd.exe -f board/esp32-wrover-kit-3.3v.cfg
+//gravar pela flash o programa
+//apertar no debug umas 2x que vai
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "GDB",
+      "type": "cppdbg",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/build",
+      "program": "${workspaceFolder}/build/teste.elf",
+      //"miDebuggerPath": "${command:espIdf.getXtensaGdb}",
+      "miDebuggerPath": "C:/Users/geovane.ferreira/.espressif/tools/xtensa-esp32-elf/esp-2021r1-8.4.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-gdb.exe",
+      "setupCommands": [
+        { "text": "target remote 127.0.0.1:3333" },
+        { "text": "set remote hardware-watchpoint-limit 2"},
+        { "text": "mon reset halt" },
+        //{ "text": "thb app_main" },
+        { "text": "flushregs" }
+      ],
+    }
+  ]
+}
