@@ -21,6 +21,9 @@
 
 static const char *TAG = "ILI9340";
 
+//Component used as:
+//https://github.com/JarrettR/esp-idf-ili9340
+
 static void SPIFFS_Directory(char * path) {
 	DIR* dir = opendir(path);
 	assert(dir != NULL);
