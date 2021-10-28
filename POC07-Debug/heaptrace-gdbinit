@@ -1,0 +1,18 @@
+set pagination off
+target remote :3333
+
+mon reset halt
+flushregs
+
+tb heap_trace_start
+commands
+mon esp sysview start file:///Users/geovaneferreira/Repositorios/GitHub_Geovane/esp-pocs/POC07-Debug/trace/htrace_1635444791124.svdat
+c
+end
+
+tb heap_trace_stop
+commands
+mon esp sysview stop
+end
+
+c

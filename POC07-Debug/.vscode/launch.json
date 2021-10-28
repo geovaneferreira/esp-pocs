@@ -23,7 +23,7 @@
         { "text": "target remote 127.0.0.1:3333" },
         { "text": "set remote hardware-watchpoint-limit 2"},
         { "text": "mon reset halt" },
-        //{ "text": "thb app_main" },
+        { "text": "thb app_main" },
         { "text": "flushregs" }
       ],
     }
