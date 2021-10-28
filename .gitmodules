@@ -1,0 +1,3 @@
+[submodule "POC08-TFT_LCD_Dispay/components/ili9340"]
+	path = POC08-TFT_LCD_Dispay/components/ili9340
+	url = https://github.com/JarrettR/esp-idf-ili9340.git
