@@ -6,7 +6,7 @@ flushregs
 
 tb heap_trace_start
 commands
-mon esp sysview start file:///Users/geovaneferreira/Repositorios/GitHub_Geovane/esp-pocs/POC07-Debug/trace/htrace_1635444791124.svdat
+mon esp sysview start file:///Users/geovaneferreira/Repositorios/GitHub_Geovane/esp-pocs/POC07-Debug/trace/htrace_1635448038129.svdat
 c
 end
 

@@ -12,7 +12,8 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "GDB",
+      "name": "Debugging GDB",
+      "preLaunchTask": "preRunDebuger",
       "type": "cppdbg",
       "request": "launch",
       "cwd": "${workspaceFolder}/build",
@@ -23,9 +24,29 @@
         { "text": "target remote 127.0.0.1:3333" },
         { "text": "set remote hardware-watchpoint-limit 2"},
         { "text": "mon reset halt" },
-        { "text": "thb app_main" },
         { "text": "flushregs" }
       ],
-    }
+    },
+    {
+      "name": "Flash and Debugging",
+      "preLaunchTask": "preRunDebuger",
+      "type": "cppdbg",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/build",
+      "program": "${workspaceFolder}/build/teste.elf",
+      "miDebuggerPath": "${command:espIdf.getXtensaGdb}",
+      //"miDebuggerPath": "C:/Users/geovane.ferreira/.espressif/tools/xtensa-esp32-elf/esp-2021r1-8.4.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-gdb.exe",
+      "setupCommands": [
+        { "text": "target remote 127.0.0.1:3333" },
+        { "text": "set remote hardware-watchpoint-limit 2"},
+        { "text": "mon reset halt" },
+        { "text": "flushregs" },
+        { "text": "mon program_esp build/bootloader/bootloader.bin 0x1000 verify"},
+        { "text": "mon program_esp build/partition_table/partition-table.bin 0x8000 verify"},
+        { "text": "mon program_esp /build/teste.bin 0x1000 verify"},
+        { "text": "monitor reset halt" },
+        { "text": "flushregs" }
+      ],
+    },
   ]
 }

@@ -11,7 +11,10 @@
 #include "freertos/task.h"
 #include "esp_system.h"
 #include "esp_spi_flash.h"
+#include "driver/gpio.h"
 
+#define BLINK_GPIO 2
+static uint8_t s_led_state = 0;
 
 void app_main(void)
 {
@@ -30,10 +33,16 @@ void app_main(void)
     printf("%dMB %s flash\n", spi_flash_get_chip_size() / (1024 * 1024),
             (chip_info.features & CHIP_FEATURE_EMB_FLASH) ? "embedded" : "external");
 
+    gpio_reset_pin(BLINK_GPIO);
+    /* Set the GPIO as a push/pull output */
+    gpio_set_direction(BLINK_GPIO, GPIO_MODE_OUTPUT);
+    
     while(true){
         int val = 100;
         for (int i = 10; i >= 0; i--) {
-            printf("Restarting in %d seconds...\n", i);
+            gpio_set_level(BLINK_GPIO, s_led_state);
+             s_led_state = !s_led_state;
+            printf("Hi %d\n", i);
             vTaskDelay(1000 / portTICK_PERIOD_MS);
             val--;
         }

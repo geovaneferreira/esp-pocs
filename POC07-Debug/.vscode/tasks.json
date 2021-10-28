@@ -295,6 +295,16 @@
                     }
                 }
             }
+        },
+        {
+            "type": "shell",
+            "label": "preRunDebuger",
+            "isBackground": true,
+            // IMPORTANT! 
+            //1. Change dir to your openocd
+            //2. This commands is disable RTOS multiple debug, for enable remove this part:
+            // -c \"set ESP_RTOS none\"
+            "command": "/Users/geovaneferreira/.espressif/tools/openocd-esp32/v0.10.0-esp32-20210902/openocd-esp32/bin/openocd -c \"set ESP_RTOS none\" -f board/esp32-wrover-kit-3.3v.cfg",
         }
     ]
 }
