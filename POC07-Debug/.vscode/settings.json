@@ -1,11 +1,21 @@
 {
     "C_Cpp.intelliSenseEngine": "Tag Parser",
+    //MacOS
     "idf.adapterTargetName": "esp32",
-    "idf.customExtraPaths": "C:\\Users\\geovane.ferreira\\.espressif\\tools\\xtensa-esp32-elf\\esp-2021r1-8.4.0\\xtensa-esp32-elf\\bin;C:\\Users\\geovane.ferreira\\.espressif\\tools\\xtensa-esp32s2-elf\\esp-2021r1-8.4.0\\xtensa-esp32s2-elf\\bin;C:\\Users\\geovane.ferreira\\.espressif\\tools\\xtensa-esp32s3-elf\\esp-2021r1-8.4.0\\xtensa-esp32s3-elf\\bin;C:\\Users\\geovane.ferreira\\.espressif\\tools\\riscv32-esp-elf\\esp-2021r1-8.4.0\\riscv32-esp-elf\\bin;C:\\Users\\geovane.ferreira\\.espressif\\tools\\esp32ulp-elf\\2.28.51-esp-20191205\\esp32ulp-elf-binutils\\bin;C:\\Users\\geovane.ferreira\\.espressif\\tools\\esp32s2ulp-elf\\2.28.51-esp-20191205\\esp32s2ulp-elf-binutils\\bin;C:\\Users\\geovane.ferreira\\.espressif\\tools\\cmake\\3.20.3\\bin;C:\\Users\\geovane.ferreira\\.espressif\\tools\\openocd-esp32\\v0.10.0-esp32-20210902\\openocd-esp32\\bin;C:\\Users\\geovane.ferreira\\.espressif\\tools\\ninja\\1.10.2;C:\\Users\\geovane.ferreira\\.espressif\\tools\\idf-exe\\1.0.1;C:\\Users\\geovane.ferreira\\.espressif\\tools\\ccache\\4.3\\ccache-4.3-windows-64;C:\\Users\\geovane.ferreira\\.espressif\\tools\\dfu-util\\0.9\\dfu-util-0.9-win64",
-    "idf.customExtraVars": "{\"OPENOCD_SCRIPTS\":\"C:\\\\Users\\\\geovane.ferreira\\\\.espressif\\\\tools\\\\openocd-esp32\\\\v0.10.0-esp32-20210902/openocd-esp32/share/openocd/scripts\",\"IDF_CCACHE_ENABLE\":\"1\"}",
-    "idf.espIdfPathWin": "C:/Users/geovane.ferreira/esp/esp-idf/",
+    "idf.customExtraPaths": "/Users/geovaneferreira/.espressif/tools/xtensa-esp32-elf/esp-2021r2-8.4.0/xtensa-esp32-elf/bin:/Users/geovaneferreira/.espressif/tools/xtensa-esp32s2-elf/esp-2021r2-8.4.0/xtensa-esp32s2-elf/bin:/Users/geovaneferreira/.espressif/tools/xtensa-esp32s3-elf/esp-2021r2-8.4.0/xtensa-esp32s3-elf/bin:/Users/geovaneferreira/.espressif/tools/riscv32-esp-elf/esp-2021r2-8.4.0/riscv32-esp-elf/bin:/Users/geovaneferreira/.espressif/tools/esp32ulp-elf/2.28.51-esp-20191205/esp32ulp-elf-binutils/bin:/Users/geovaneferreira/.espressif/tools/esp32s2ulp-elf/2.28.51-esp-20191205/esp32s2ulp-elf-binutils/bin:/Users/geovaneferreira/.espressif/tools/openocd-esp32/v0.10.0-esp32-20210902/openocd-esp32/bin",
+    "idf.customExtraVars": "{\"OPENOCD_SCRIPTS\":\"/Users/geovaneferreira/.espressif/tools/openocd-esp32/v0.10.0-esp32-20210902/openocd-esp32/share/openocd/scripts\"}",
+    "idf.espIdfPath": "/Users/geovaneferreira/esp/esp-idf",
     "idf.openOcdConfigs": "interface/ftdi/esp32_devkitj_v1.cfg,target/esp32.cfg",
-    "idf.portWin": "COM7",
-    "idf.pythonBinPathWin": "C:/Users/geovane.ferreira/.espressif/python_env/idf4.4_py3.8_env/Scripts/python.exe",
-    "idf.toolsPathWin": "C:\\Users\\geovane.ferreira\\.espressif"
+    "idf.port": "/dev/tty.usbserial-0001",
+    "idf.pythonBinPath": "/Users/geovaneferreira/.espressif/python_env/idf5.0_py3.10_env/bin/python",
+    "idf.toolsPath": "/Users/geovaneferreira/.espressif"
+    //Windows
+    // "idf.adapterTargetName": "esp32",
+    // "idf.customExtraPaths": "C:\\Users\\geovane.ferreira\\.espressif\\tools\\xtensa-esp32-elf\\esp-2021r1-8.4.0\\xtensa-esp32-elf\\bin;C:\\Users\\geovane.ferreira\\.espressif\\tools\\xtensa-esp32s2-elf\\esp-2021r1-8.4.0\\xtensa-esp32s2-elf\\bin;C:\\Users\\geovane.ferreira\\.espressif\\tools\\xtensa-esp32s3-elf\\esp-2021r1-8.4.0\\xtensa-esp32s3-elf\\bin;C:\\Users\\geovane.ferreira\\.espressif\\tools\\riscv32-esp-elf\\esp-2021r1-8.4.0\\riscv32-esp-elf\\bin;C:\\Users\\geovane.ferreira\\.espressif\\tools\\esp32ulp-elf\\2.28.51-esp-20191205\\esp32ulp-elf-binutils\\bin;C:\\Users\\geovane.ferreira\\.espressif\\tools\\esp32s2ulp-elf\\2.28.51-esp-20191205\\esp32s2ulp-elf-binutils\\bin;C:\\Users\\geovane.ferreira\\.espressif\\tools\\cmake\\3.20.3\\bin;C:\\Users\\geovane.ferreira\\.espressif\\tools\\openocd-esp32\\v0.10.0-esp32-20210902\\openocd-esp32\\bin;C:\\Users\\geovane.ferreira\\.espressif\\tools\\ninja\\1.10.2;C:\\Users\\geovane.ferreira\\.espressif\\tools\\idf-exe\\1.0.1;C:\\Users\\geovane.ferreira\\.espressif\\tools\\ccache\\4.3\\ccache-4.3-windows-64;C:\\Users\\geovane.ferreira\\.espressif\\tools\\dfu-util\\0.9\\dfu-util-0.9-win64",
+    // "idf.customExtraVars": "{\"OPENOCD_SCRIPTS\":\"C:\\\\Users\\\\geovane.ferreira\\\\.espressif\\\\tools\\\\openocd-esp32\\\\v0.10.0-esp32-20210902/openocd-esp32/share/openocd/scripts\",\"IDF_CCACHE_ENABLE\":\"1\"}",
+    // "idf.espIdfPathWin": "C:/Users/geovane.ferreira/esp/esp-idf/",
+    // "idf.openOcdConfigs": "interface/ftdi/esp32_devkitj_v1.cfg,target/esp32.cfg",
+    // "idf.portWin": "COM7",
+    // "idf.pythonBinPathWin": "C:/Users/geovane.ferreira/.espressif/python_env/idf4.4_py3.8_env/Scripts/python.exe",
+    // "idf.toolsPathWin": "C:\\Users\\geovane.ferreira\\.espressif"
 }
