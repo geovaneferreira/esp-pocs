@@ -1,13 +1,17 @@
 //Tutorial: https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/DEBUGGING.md
 //
-//Atualizar os drivers do pc
+//Need Install VSCode Plugin (damiankoper.gdb-debug Nome: GDB Debug): 
+//Marketplace do VS: https://marketplace.visualstudio.com/items?itemName=DamianKoper.gdb-debug
+//
+//Update drivers for pc
 // https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/jtag-debugging/configure-ft2232h-jtag.html
 //
-//rodar o openocd 
+//Start openocd 
 // Windows -> C:\Users\geovane.ferreira\.espressif\tools\openocd-esp32\v0.10.0-esp32-20210902\openocd-esp32\bin\openocd.exe -f board/esp32-wrover-kit-3.3v.cfg
 // MacOS -> /Users/geovaneferreira/.espressif/tools/openocd-esp32/v0.10.0-esp32-20210902/openocd-esp32/bin/./openocd -f board/esp32-wrover-kit-3.3v.cfg
-//gravar pela flash o programa
-//apertar no debug umas 2x que vai
+//
+//Flash the program
+//Start debugging (apertar no debug umas 2x que vai)
 {
   "version": "0.2.0",
   "configurations": [
