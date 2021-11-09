@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/Users/geovaneferreira/Repositorios/GitHub_Geovane/esp-pocs/POC09-ESP32-S3/build/CMakeFiles/bootloader
+/Users/geovaneferreira/Repositorios/GitHub_Geovane/esp-pocs/POC09-ESP32-S3/build/CMakeFiles/bootloader.rule
+/Users/geovaneferreira/Repositorios/GitHub_Geovane/esp-pocs/POC09-ESP32-S3/build/CMakeFiles/bootloader-complete.rule
+/Users/geovaneferreira/Repositorios/GitHub_Geovane/esp-pocs/POC09-ESP32-S3/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/Users/geovaneferreira/Repositorios/GitHub_Geovane/esp-pocs/POC09-ESP32-S3/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/Users/geovaneferreira/Repositorios/GitHub_Geovane/esp-pocs/POC09-ESP32-S3/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/Users/geovaneferreira/Repositorios/GitHub_Geovane/esp-pocs/POC09-ESP32-S3/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/Users/geovaneferreira/Repositorios/GitHub_Geovane/esp-pocs/POC09-ESP32-S3/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/Users/geovaneferreira/Repositorios/GitHub_Geovane/esp-pocs/POC09-ESP32-S3/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/Users/geovaneferreira/Repositorios/GitHub_Geovane/esp-pocs/POC09-ESP32-S3/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
