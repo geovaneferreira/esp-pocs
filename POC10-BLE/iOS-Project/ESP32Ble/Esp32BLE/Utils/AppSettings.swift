@@ -27,7 +27,7 @@ class AppSettings {
 
     // - BLE
     
-    static let BLE_DEVICE_NAME: String = "Esp32_Device"     // Device name (start with)
+    static let BLE_DEVICE_NAME: String = "My ESP32"     // Device name (start with)
     static let BLE_TIMEOUT: Int = 2                         // Timeout for BLE (in seconds)
 
     // - Turn off - send a message to ESP32 device enter in deep sleep on exit of this app ?

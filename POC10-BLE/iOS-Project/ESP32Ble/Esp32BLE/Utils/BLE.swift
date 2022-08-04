@@ -160,7 +160,7 @@ class BLE: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         self.maxRSSIFound = 0
         self.bufferReceived = ""
         self.lastTimeReceived = 0
-        self.peripheralStartName = "Lora P2P Sniffer"
+        self.peripheralStartName = "My ESP32"
         
         self.peripheralScanned = nil
         self.peripheralConnected = nil
@@ -178,7 +178,7 @@ class BLE: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral,advertisementData: [String : Any], rssi RSSI: NSNumber) {
         
         if(peripheral.name != nil){
-            if (peripheral.name == "Lora P2P Sniffer") {
+            if (peripheral.name == self.peripheralStartName) {
                 
     //            if debugBle(.verbose) {
                     debugV("name -> \(peripheral.name ?? "")", function: "didDiscover")
