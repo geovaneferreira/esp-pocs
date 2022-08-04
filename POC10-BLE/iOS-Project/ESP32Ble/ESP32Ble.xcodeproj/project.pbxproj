@@ -1,0 +1,415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C51F3741289AFD9300A7277C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F3740289AFD9300A7277C /* AppDelegate.swift */; };
+		C51F3743289AFD9300A7277C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F3742289AFD9300A7277C /* SceneDelegate.swift */; };
+		C51F3745289AFD9300A7277C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F3744289AFD9300A7277C /* ViewController.swift */; };
+		C51F3748289AFD9300A7277C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C51F3746289AFD9300A7277C /* Main.storyboard */; };
+		C51F374A289AFD9400A7277C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C51F3749289AFD9400A7277C /* Assets.xcassets */; };
+		C51F374D289AFD9400A7277C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C51F374B289AFD9400A7277C /* LaunchScreen.storyboard */; };
+		C51F3757289AFDA600A7277C /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F3755289AFDA500A7277C /* Debug.swift */; };
+		C51F3758289AFDA600A7277C /* BLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F3756289AFDA600A7277C /* BLE.swift */; };
+		C51F375A289AFF7800A7277C /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F3759289AFF7800A7277C /* MainController.swift */; };
+		C51F375C289B003F00A7277C /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F375B289B003F00A7277C /* AppSettings.swift */; };
+		C51F375E289B005500A7277C /* BLEDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F375D289B005500A7277C /* BLEDebug.swift */; };
+		C51F3762289B0AE300A7277C /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51F3761289B0AE300A7277C /* CoreBluetooth.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C51F373D289AFD9300A7277C /* Esp32BLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Esp32BLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C51F3740289AFD9300A7277C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C51F3742289AFD9300A7277C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C51F3744289AFD9300A7277C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C51F3747289AFD9300A7277C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C51F3749289AFD9400A7277C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C51F374C289AFD9400A7277C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C51F374E289AFD9400A7277C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C51F3755289AFDA500A7277C /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
+		C51F3756289AFDA600A7277C /* BLE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLE.swift; sourceTree = "<group>"; };
+		C51F3759289AFF7800A7277C /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		C51F375B289B003F00A7277C /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		C51F375D289B005500A7277C /* BLEDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEDebug.swift; sourceTree = "<group>"; };
+		C51F375F289B068C00A7277C /* Esp32BLE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Esp32BLE.entitlements; sourceTree = "<group>"; };
+		C51F3761289B0AE300A7277C /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C51F373A289AFD9300A7277C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C51F3762289B0AE300A7277C /* CoreBluetooth.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C51F3734289AFD9300A7277C = {
+			isa = PBXGroup;
+			children = (
+				C51F373F289AFD9300A7277C /* Esp32BLE */,
+				C51F373E289AFD9300A7277C /* Products */,
+				C51F3760289B0AE200A7277C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C51F373E289AFD9300A7277C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C51F373D289AFD9300A7277C /* Esp32BLE.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C51F373F289AFD9300A7277C /* Esp32BLE */ = {
+			isa = PBXGroup;
+			children = (
+				C51F375F289B068C00A7277C /* Esp32BLE.entitlements */,
+				C51F3754289AFD9D00A7277C /* Utils */,
+				C51F3740289AFD9300A7277C /* AppDelegate.swift */,
+				C51F3742289AFD9300A7277C /* SceneDelegate.swift */,
+				C51F3759289AFF7800A7277C /* MainController.swift */,
+				C51F3744289AFD9300A7277C /* ViewController.swift */,
+				C51F3746289AFD9300A7277C /* Main.storyboard */,
+				C51F3749289AFD9400A7277C /* Assets.xcassets */,
+				C51F374B289AFD9400A7277C /* LaunchScreen.storyboard */,
+				C51F374E289AFD9400A7277C /* Info.plist */,
+			);
+			path = Esp32BLE;
+			sourceTree = "<group>";
+		};
+		C51F3754289AFD9D00A7277C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C51F375D289B005500A7277C /* BLEDebug.swift */,
+				C51F375B289B003F00A7277C /* AppSettings.swift */,
+				C51F3756289AFDA600A7277C /* BLE.swift */,
+				C51F3755289AFDA500A7277C /* Debug.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C51F3760289B0AE200A7277C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C51F3761289B0AE300A7277C /* CoreBluetooth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C51F373C289AFD9300A7277C /* Esp32BLE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C51F3751289AFD9400A7277C /* Build configuration list for PBXNativeTarget "Esp32BLE" */;
+			buildPhases = (
+				C51F3739289AFD9300A7277C /* Sources */,
+				C51F373A289AFD9300A7277C /* Frameworks */,
+				C51F373B289AFD9300A7277C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Esp32BLE;
+			productName = Esp32BLE;
+			productReference = C51F373D289AFD9300A7277C /* Esp32BLE.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C51F3735289AFD9300A7277C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					C51F373C289AFD9300A7277C = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = C51F3738289AFD9300A7277C /* Build configuration list for PBXProject "Esp32BLE" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C51F3734289AFD9300A7277C;
+			productRefGroup = C51F373E289AFD9300A7277C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C51F373C289AFD9300A7277C /* Esp32BLE */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C51F373B289AFD9300A7277C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C51F374D289AFD9400A7277C /* LaunchScreen.storyboard in Resources */,
+				C51F374A289AFD9400A7277C /* Assets.xcassets in Resources */,
+				C51F3748289AFD9300A7277C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C51F3739289AFD9300A7277C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C51F3758289AFDA600A7277C /* BLE.swift in Sources */,
+				C51F3745289AFD9300A7277C /* ViewController.swift in Sources */,
+				C51F375C289B003F00A7277C /* AppSettings.swift in Sources */,
+				C51F375E289B005500A7277C /* BLEDebug.swift in Sources */,
+				C51F3757289AFDA600A7277C /* Debug.swift in Sources */,
+				C51F3741289AFD9300A7277C /* AppDelegate.swift in Sources */,
+				C51F375A289AFF7800A7277C /* MainController.swift in Sources */,
+				C51F3743289AFD9300A7277C /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C51F3746289AFD9300A7277C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C51F3747289AFD9300A7277C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C51F374B289AFD9400A7277C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C51F374C289AFD9400A7277C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C51F374F289AFD9400A7277C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C51F3750289AFD9400A7277C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C51F3752289AFD9400A7277C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Esp32BLE/Esp32BLE.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M4437JJR35;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Esp32BLE/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Pesquisar por sniffer p2p";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "P2P Devices";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gvf.Esp32BLE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C51F3753289AFD9400A7277C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Esp32BLE/Esp32BLE.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M4437JJR35;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Esp32BLE/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Pesquisar por sniffer p2p";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "P2P Devices";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gvf.Esp32BLE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C51F3738289AFD9300A7277C /* Build configuration list for PBXProject "Esp32BLE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C51F374F289AFD9400A7277C /* Debug */,
+				C51F3750289AFD9400A7277C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C51F3751289AFD9400A7277C /* Build configuration list for PBXNativeTarget "Esp32BLE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C51F3752289AFD9400A7277C /* Debug */,
+				C51F3753289AFD9400A7277C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C51F3735289AFD9300A7277C /* Project object */;
+}
