@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 480" width="780" height="480" font-family="Helvetica, Arial, sans-serif">
+  <title>Interface ESP32 - rastreador com BC548 em coletor aberto</title>
+  <rect x="0" y="0" width="780" height="480" rx="10" fill="#ffffff"/>
+  <rect x="0.5" y="0.5" width="779" height="479" rx="10" fill="none" stroke="#d0d7de"/>
+
+  <text x="40" y="32" font-size="17" font-weight="bold" fill="#111827">Saída de pulsos: ESP32 → rastreador (BC548 em coletor aberto, pull-up em 12 V)</text>
+
+  <!-- fios -->
+  <g fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round">
+    <!-- GPIO 23 -> R1 -> base -->
+    <path d="M190 220 H250"/>
+    <path d="M320 220 H403"/>
+    <!-- coletor -> no de saida -> R2 -> +12 V -->
+    <path d="M403 208 L445 184 V135"/>
+    <path d="M445 75 V55"/>
+    <path d="M428 55 H462"/>
+    <!-- saida para o rastreador -->
+    <path d="M445 150 H600"/>
+    <!-- emissor -> GND -->
+    <path d="M403 232 L445 256 V320"/>
+    <!-- trilho de GND -->
+    <path d="M190 320 H600"/>
+    <!-- simbolo de terra -->
+    <path d="M445 320 V338"/>
+    <path d="M430 338 H460"/>
+    <path d="M435 345 H455"/>
+    <path d="M440 352 H450"/>
+  </g>
+
+  <!-- ESP32 -->
+  <rect x="40" y="130" width="150" height="220" rx="6" fill="#eef4ff" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="115" y="170" font-size="18" font-weight="bold" text-anchor="middle" fill="#1e3a8a">ESP32</text>
+  <text x="115" y="188" font-size="12" text-anchor="middle" fill="#1e3a8a">WROOM-32D (3,3 V)</text>
+  <text x="182" y="225" font-size="14" text-anchor="end" fill="#111827">GPIO 23</text>
+  <text x="182" y="325" font-size="14" text-anchor="end" fill="#111827">GND</text>
+
+  <!-- R1 -->
+  <rect x="250" y="210" width="70" height="20" fill="#fff7ed" stroke="#111827" stroke-width="2"/>
+  <text x="285" y="200" font-size="14" text-anchor="middle" fill="#111827">R1 · 1 kΩ</text>
+
+  <!-- R2 -->
+  <rect x="435" y="75" width="20" height="60" fill="#fff7ed" stroke="#111827" stroke-width="2"/>
+  <text x="466" y="110" font-size="14" fill="#111827">R2 · 10 kΩ</text>
+  <text x="472" y="60" font-size="15" font-weight="bold" fill="#b91c1c">+12 V</text>
+
+  <!-- Q1 BC548 (NPN) -->
+  <circle cx="425" cy="220" r="36" fill="none" stroke="#111827" stroke-width="2"/>
+  <path d="M403 196 V244" stroke="#111827" stroke-width="4" stroke-linecap="round"/>
+  <polygon points="441,253.7 428.1,252 433.1,243.4" fill="#111827"/>
+  <text x="472" y="216" font-size="14" font-weight="bold" fill="#111827">Q1 · BC548</text>
+  <text x="472" y="233" font-size="12" fill="#4b5563">NPN</text>
+  <text x="378" y="211" font-size="13" text-anchor="end" fill="#b45309">B</text>
+  <text x="453" y="178" font-size="13" fill="#b45309">C</text>
+  <text x="453" y="276" font-size="13" fill="#b45309">E</text>
+
+  <!-- nos -->
+  <circle cx="445" cy="150" r="4" fill="#111827"/>
+  <circle cx="445" cy="320" r="4" fill="#111827"/>
+
+  <text x="522" y="141" font-size="13" text-anchor="middle" fill="#047857">pulsos 0 / 12 V</text>
+  <text x="420" y="343" font-size="12" text-anchor="end" fill="#4b5563">GND comum</text>
+  <text x="420" y="358" font-size="12" text-anchor="end" fill="#4b5563">(ESP32, fonte 12 V e rastreador)</text>
+
+  <!-- rastreador -->
+  <rect x="600" y="110" width="140" height="240" rx="6" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+  <text x="670" y="225" font-size="17" font-weight="bold" text-anchor="middle" fill="#065f46">Rastreador</text>
+  <text x="670" y="243" font-size="12" text-anchor="middle" fill="#065f46">entrada do tacógrafo</text>
+  <text x="608" y="155" font-size="14" fill="#111827">Entrada pulsos</text>
+  <text x="608" y="325" font-size="14" fill="#111827">GND</text>
+
+  <!-- pinagem do BC548 -->
+  <g>
+    <rect x="62" y="398" width="54" height="32" rx="4" fill="#374151"/>
+    <g stroke="#6b7280" stroke-width="3" stroke-linecap="round">
+      <path d="M74 430 V452"/>
+      <path d="M89 430 V452"/>
+      <path d="M104 430 V452"/>
+    </g>
+    <text x="89" y="419" font-size="11" text-anchor="middle" fill="#ffffff">BC548</text>
+    <g font-size="13" font-weight="bold" text-anchor="middle" fill="#b45309">
+      <text x="74" y="468">C</text>
+      <text x="89" y="468">B</text>
+      <text x="104" y="468">E</text>
+    </g>
+    <text x="132" y="418" font-size="13" fill="#111827">Pinagem TO-92, face plana de frente,</text>
+    <text x="132" y="436" font-size="13" fill="#111827">pernas para baixo: C · B · E</text>
+  </g>
+
+  <!-- observacao -->
+  <g font-size="13" fill="#111827">
+    <text x="420" y="418" font-weight="bold">Saída invertida</text>
+    <text x="420" y="436">GPIO 23 alto → saída em ≈ 0 V</text>
+    <text x="420" y="454">GPIO 23 baixo → saída em 12 V (via R2)</text>
+  </g>
+</svg>
