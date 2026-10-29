@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 560" width="940" height="560" font-family="Helvetica, Arial, sans-serif">
+  <title>Instalação 24 V: GPIO 23 do ESP32 como saída B7 do tacógrafo</title>
+  <defs>
+    <g id="gnd" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round">
+      <path d="M0 0 V14"/>
+      <path d="M-15 14 H15"/>
+      <path d="M-10 21 H10"/>
+      <path d="M-5 28 H5"/>
+    </g>
+  </defs>
+  <rect x="0" y="0" width="940" height="560" rx="10" fill="#ffffff"/>
+  <rect x="0.5" y="0.5" width="939" height="559" rx="10" fill="none" stroke="#d0d7de"/>
+
+  <text x="40" y="34" font-size="17" font-weight="bold" fill="#111827">Caminhão 24 V: GPIO 23 do ESP32 fazendo o papel do B7 (sinal de velocidade) do tacógrafo</text>
+
+  <!-- fios -->
+  <g fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- trilho +24 V -->
+    <path d="M325 70 H855"/>
+    <path d="M325 70 V100"/>
+    <path d="M855 70 V170"/>
+    <!-- buck -> VIN do ESP32 -->
+    <path d="M260 140 H140 V250"/>
+    <!-- GPIO 23 -> R1 -> gate -->
+    <path d="M220 330 H270"/>
+    <path d="M330 330 H532"/>
+    <!-- R3 gate -> GND -->
+    <path d="M400 330 V360"/>
+    <path d="M400 410 V420"/>
+    <!-- R2 pull-up -->
+    <path d="M572 70 V100"/>
+    <path d="M572 160 V314 H544"/>
+    <!-- source + corpo -> GND -->
+    <path d="M544 346 H572"/>
+    <path d="M548 330 H572 V420"/>
+    <!-- saida B7 -> rastreador -->
+    <path d="M572 210 H800"/>
+    <!-- zener -->
+    <path d="M700 210 V290"/>
+    <path d="M700 312 V420"/>
+    <path d="M684 286 L688 290 H712 L716 294"/>
+    <!-- GND do ESP32 e do rastreador -->
+    <path d="M220 420 H250"/>
+    <path d="M800 420 H780"/>
+  </g>
+
+  <!-- terras -->
+  <use href="#gnd" x="325" y="180"/>
+  <use href="#gnd" x="250" y="420"/>
+  <use href="#gnd" x="400" y="420"/>
+  <use href="#gnd" x="572" y="420"/>
+  <use href="#gnd" x="700" y="420"/>
+  <use href="#gnd" x="780" y="420"/>
+
+  <text x="312" y="75" font-size="15" font-weight="bold" text-anchor="end" fill="#b91c1c">+24 V (caminhão)</text>
+
+  <!-- buck -->
+  <rect x="260" y="100" width="130" height="80" rx="6" fill="#fef9c3" stroke="#a16207" stroke-width="2"/>
+  <text x="325" y="126" font-size="14" font-weight="bold" text-anchor="middle" fill="#713f12">Buck 24 → 5 V</text>
+  <text x="325" y="144" font-size="12" text-anchor="middle" fill="#713f12">entrada ≥ 60 V</text>
+  <text x="325" y="160" font-size="11" text-anchor="middle" fill="#713f12">(LM2596HV, XL7015)</text>
+  <text x="200" y="132" font-size="13" text-anchor="middle" fill="#111827">5 V</text>
+
+  <!-- ESP32 -->
+  <rect x="60" y="250" width="160" height="190" rx="6" fill="#eef4ff" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="140" y="270" font-size="12" text-anchor="middle" fill="#111827">VIN</text>
+  <text x="140" y="298" font-size="18" font-weight="bold" text-anchor="middle" fill="#1e3a8a">ESP32</text>
+  <text x="140" y="314" font-size="12" text-anchor="middle" fill="#1e3a8a">WROOM-32D</text>
+  <text x="212" y="345" font-size="14" text-anchor="end" fill="#111827">GPIO 23</text>
+  <text x="212" y="425" font-size="14" text-anchor="end" fill="#111827">GND</text>
+
+  <!-- R1 -->
+  <rect x="270" y="320" width="60" height="20" fill="#fff7ed" stroke="#111827" stroke-width="2"/>
+  <text x="300" y="311" font-size="14" text-anchor="middle" fill="#111827">R1 · 100 Ω</text>
+  <text x="300" y="362" font-size="12" text-anchor="middle" fill="#047857">gera o sinal do B7</text>
+
+  <!-- R3 -->
+  <rect x="390" y="360" width="20" height="50" fill="#fff7ed" stroke="#111827" stroke-width="2"/>
+  <text x="418" y="384" font-size="14" fill="#111827">R3 · 100 kΩ</text>
+  <text x="418" y="400" font-size="11" fill="#4b5563">mantém desligado no boot</text>
+
+  <!-- R2 -->
+  <rect x="562" y="100" width="20" height="60" fill="#fff7ed" stroke="#111827" stroke-width="2"/>
+  <text x="552" y="126" font-size="14" text-anchor="end" fill="#111827">R2 · 10 kΩ</text>
+  <text x="552" y="143" font-size="12" text-anchor="end" fill="#4b5563">1/2 W (pull-up)</text>
+
+  <!-- Q1 2N7000 (MOSFET canal N) -->
+  <circle cx="556" cy="330" r="36" fill="none" stroke="#111827" stroke-width="2"/>
+  <g stroke="#111827" stroke-width="3" stroke-linecap="round">
+    <path d="M532 310 V350"/>
+    <path d="M544 308 V320"/>
+    <path d="M544 324 V336"/>
+    <path d="M544 340 V352"/>
+  </g>
+  <polygon points="546,330 556,325 556,335" fill="#111827"/>
+  <text x="512" y="322" font-size="13" text-anchor="end" fill="#b45309">G</text>
+  <text x="580" y="282" font-size="13" fill="#b45309">D</text>
+  <text x="580" y="378" font-size="13" fill="#b45309">S</text>
+  <text x="586" y="400" font-size="14" font-weight="bold" fill="#111827">Q1 · 2N7000</text>
+  <text x="586" y="416" font-size="12" fill="#4b5563">MOSFET canal N</text>
+
+  <!-- D1 zener -->
+  <polygon points="700,290 688,312 712,312" fill="#111827"/>
+  <text x="722" y="290" font-size="14" font-weight="bold" fill="#111827">D1 · 36 V</text>
+  <text x="722" y="306" font-size="12" fill="#4b5563">zener 1 W</text>
+  <text x="722" y="321" font-size="12" fill="#4b5563">1N4753A</text>
+
+  <!-- nos -->
+  <circle cx="572" cy="70" r="4" fill="#111827"/>
+  <circle cx="572" cy="210" r="4" fill="#111827"/>
+  <circle cx="700" cy="210" r="4" fill="#111827"/>
+  <circle cx="400" cy="330" r="4" fill="#111827"/>
+
+  <text x="636" y="200" font-size="13" text-anchor="middle" fill="#047857">pulsos 0 / 24 V</text>
+  <rect x="733" y="199" width="44" height="22" rx="11" fill="#047857"/>
+  <text x="755" y="215" font-size="14" font-weight="bold" text-anchor="middle" fill="#ffffff">B7</text>
+
+  <!-- rastreador -->
+  <rect x="800" y="170" width="110" height="270" rx="6" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+  <text x="855" y="188" font-size="11" text-anchor="middle" fill="#065f46">alim. +24 V</text>
+  <text x="808" y="226" font-size="13" fill="#111827">Entrada</text>
+  <text x="808" y="241" font-size="13" fill="#111827">velocidade</text>
+  <text x="855" y="320" font-size="16" font-weight="bold" text-anchor="middle" fill="#065f46">Rastreador</text>
+  <text x="808" y="425" font-size="13" fill="#111827">GND</text>
+
+  <!-- notas -->
+  <g font-size="13" fill="#111827">
+    <text x="40" y="492"><tspan font-weight="bold">GND comum:</tspan> todos os símbolos de terra são o mesmo GND (chassi), ligando ESP32, buck, Q1, D1 e rastreador.</text>
+    <text x="40" y="514"><tspan font-weight="bold">Saída invertida:</tspan> GPIO 23 alto → B7 ≈ 0 V · GPIO 23 baixo → B7 = 24 V (via R2). A frequência não muda.</text>
+    <text x="40" y="536"><tspan font-weight="bold">Pinagem do 2N7000</tspan> (TO-92, face plana de frente, pernas para baixo): S · G · D</text>
+  </g>
+</svg>

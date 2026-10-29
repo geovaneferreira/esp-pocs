@@ -23,6 +23,29 @@ Pontos de atenção:
 - **Sinal invertido.** GPIO 23 em nível alto satura o transistor e a saída vai a ≈ 0 V; em nível baixo, R2 puxa a saída para 12 V. A frequência não muda, mas com o simulador parado (`stop`) a linha fica em **12 V**, e não em 0 V.
 - **12 V nunca chegam ao ESP32.** O GPIO só enxerga a base através de R1 (≈ 2,6 mA).
 
+## Instalação no caminhão (24 V, saída B7)
+
+No caminhão, o GPIO 23 faz o papel do **B7** do tacógrafo (saída do sinal de velocidade), que é o pino que alimenta a entrada de velocidade do rastreador.
+
+![Circuito 24 V: GPIO 23 do ESP32 como saída B7](docs/circuito-b7-24v.svg)
+
+Num sistema de 24 V a linha fica em 28 a 29 V com o alternador carregando, pode chegar a uns 48 V numa partida auxiliar, e tem picos perto de 58 V (load dump). Por isso o BC548 (30 V) não serve aqui e o circuito muda:
+
+| Componente | Ligação |
+| --- | --- |
+| Q1 · 2N7000 (60 V) | **dreno (D)** na saída B7, **source (S)** no GND, **gate (G)** no R1 |
+| R1 · 100 Ω | entre o GPIO 23 e o gate |
+| R3 · 100 kΩ | entre o gate e o GND, para manter a saída definida durante o boot do ESP32 |
+| R2 · 10 kΩ 1/2 W | entre o +24 V e o dreno (pull-up); 1/2 W porque dissipa ≈ 0,23 W a 48 V |
+| D1 · zener 36 V 1 W (1N4753A) | catodo no dreno, anodo no GND; grampeia os picos abaixo dos 60 V do 2N7000 |
+| Buck 24 → 5 V | alimenta o VIN do ESP32; precisa aceitar **60 V ou mais na entrada** (LM2596HV, XL7015) |
+
+- Pinagem do 2N7000 (TO-92, face plana de frente, pernas para baixo): **S · G · D**, diferente do C · B · E do BC548.
+- O zener aguenta o pico porque o pull-up de 10 kΩ limita a corrente que chega a ele: mesmo a 58 V, passam só uns 2 mA.
+- Se a entrada do rastreador já tem pull-up interno, R2 pode ser dispensado. D1 continua valendo.
+- O 2N7000 não é um MOSFET de nível lógico (o Vgs(th) pode chegar a 3 V), mas com a carga de ≈ 2,4 mA ele conduz o suficiente com os 3,3 V do GPIO. Se quiser margem, o BSS138 (SMD) é o equivalente de nível lógico.
+- A saída continua invertida e o GND continua comum (chassi), como na versão de bancada.
+
 ## Como funciona
 
 ```
@@ -84,4 +107,5 @@ A porta de upload está fixa em `/dev/tty.usbserial-0001` no [platformio.ini](pl
 ## Estrutura
 
 - [src/main.cpp](src/main.cpp): gerador de pulsos, simulação e comandos da serial
-- [docs/circuito.svg](docs/circuito.svg): diagrama do circuito
+- [docs/circuito.svg](docs/circuito.svg): diagrama do circuito de bancada (12 V, BC548)
+- [docs/circuito-b7-24v.svg](docs/circuito-b7-24v.svg): diagrama da instalação no caminhão (24 V, saída B7)
