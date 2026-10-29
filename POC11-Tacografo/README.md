@@ -95,14 +95,27 @@ O modo é `PARADO`, `FIXO` ou `SIMULANDO`.
 
 ## Compilar e gravar
 
-Projeto [PlatformIO](https://platformio.org/) (placa `esp32dev`, framework Arduino):
+Projeto [PlatformIO](https://platformio.org/) (framework Arduino) com dois ambientes:
+
+| Ambiente | Placa |
+| --- | --- |
+| `esp32dev` | ESP32-WROOM-32D genérico |
+| `heltec_wifi_lora_32_V2` | Heltec WiFi LoRa 32 V2 (HTIT-WB32LA) |
 
 ```sh
-pio run -t upload
+pio run -e heltec_wifi_lora_32_V2 -t upload
 pio device monitor
 ```
 
 A porta de upload está fixa em `/dev/tty.usbserial-0001` no [platformio.ini](platformio.ini); ajuste para a sua.
+
+### Heltec WiFi LoRa 32 V2
+
+O sinal continua no **GPIO 23**, que está livre nessa placa (pino marcado "23" na fileira de cima, entre o 19 e o 18). O circuito é o mesmo; só o R1 vai ligado nesse pino.
+
+- Os pinos 34 a 39 (incluindo o 37 marcado na placa) **só funcionam como entrada** no ESP32 e não servem para gerar o pulso.
+- Também ficam reservados o LoRa (5, 14, 18, 19, 26, 27, 34, 35) e o OLED (4, 15, 16).
+- Para alimentar pelo caminhão, o buck de 5 V vai no pino **5V** da placa.
 
 ## Estrutura
 

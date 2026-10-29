@@ -2,7 +2,7 @@
 #include <driver/gpio.h>
 
 // ---------------------------------------------------------------------------
-// Simulador de tacografo - ESP32-WROOM-32D
+// Simulador de tacografo - ESP32-WROOM-32D / Heltec WiFi LoRa 32 V2
 //
 // Gera no GPIO 23 uma onda quadrada (50% duty) cuja frequencia e proporcional
 // a velocidade, igual ao sensor de velocidade de um tacografo:
